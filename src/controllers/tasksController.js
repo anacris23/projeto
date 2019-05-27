@@ -1,17 +1,18 @@
-const tasks = require ('../models/tasks') 
+const tasks = require('../models/tasks')
 
-class tasksControllers{
-    async store (req,res) {
-        const tasks = tasks.create(req.body)
-        return res.json (tasks)
-    }
-    async update (req, res) {
-        const tasks = await Tasks.findByIdAndUpdate(req.params.id, req.body, {
-          new: true
-        })
-}
-async delete (req, res) {
-    await Task.findByIdAndDelete(req.params.id)
+class TasksControllers {
+  async store (req, res) {
+    const task = tasks.create(req.body)
+    return res.json(task)
+  }
+  async update (req, res) {
+    const task = await tasks.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    return res.json(task)
+  }
+  async delete (req, res) {
+    await tasks.findByIdAndDelete(req.params.id)
     return res.json({ message: 'Deleted' })
   }
   async list (req, res) {
@@ -20,4 +21,4 @@ async delete (req, res) {
   }
 }
 
-module.exports = new TasksController()
+module.exports = new TasksControllers()
