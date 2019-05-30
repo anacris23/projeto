@@ -2,7 +2,7 @@ const tasks = require('../models/tasks')
 
 class TasksControllers {
   async store (req, res) {
-    const task = tasks.create(req.body)
+    const task = await tasks.create(req.body)
     return res.json(task)
   }
   async update (req, res) {

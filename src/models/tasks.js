@@ -7,7 +7,8 @@ const SchemaTasks = new mongoose.Schema({
   },
 
   completed: {
-    required: true
+    type: Boolean,
+    default: false
   },
   creatAt: {
     type: Date,

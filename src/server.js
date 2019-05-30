@@ -13,11 +13,13 @@ class App {
   database () {
     mongoose.connect('mongodb://localhost:27017/atividade', {
       useNewUrlParser: true,
-      useCreateIndex: true
+      useCreateIndex: true,
+      useFindAndModify: false
     })
   }
   middleware () {
     this.express.use(express.json())
+    this.express.use(express.urlencoded({ extended: false }))
     nunjucks.configure('src/views', {
       autoescape: true,
       express: this.express,
